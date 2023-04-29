@@ -18,8 +18,15 @@ For example, it should return:
 const listAllCitiesWithCountries = (data) => {
     //return city.filter((el) => el.toLowerCase().includes(country.toLowerCase()));
 
+    //const newArr = [];
+    // array.forEach((obj) => {
+    //     newArr.push(obj['city'] + ', ' + obj['country'])
+    // })
+    // return newArr;
 
-    return data.map(obj =>  obj.city + ', ' + obj.country);
+    return data.map(obj => {
+        return obj.city + ', ' + obj.country;
+    });
 }
 
 /* 02. `listAllUsCities`
@@ -59,17 +66,19 @@ was duplicated in id 3, 7, and 9, the returned object should look like:
 
  const findDuplicates = (dataPoint) => {}
 //
-/* const findDuplicates = (dataPoint) => {
-    const cityId = dataPoint.reduce((acc, obj) => {
-        if (acc[city]) {
-            acc[city].push(obj.id)
+const findDuplicates = (arr) => {
+    const trackerObj = {}
+    arr.forEach(obj => {
+        const city = obj.city;
+        const id = obj.id;
+        if (trackerObj[city] === undefined) {
+            trackerObj[city] = [id];
         } else {
-            acc[city] = [obj.id]
+            trackerObj[city].push(id);
         }
-        return acc
-    })
-    return cityId
-} */
+    });
+    return trackerObj
+};
 
 
 /* 04. `returnDuplicate` Which city object should be corrected in
@@ -85,7 +94,8 @@ HINT: Use documentation to research the `find()` method in JavaScript. You may,
 but do not have to, use this method to solve this problem.
 */
 
-const returnDuplicate = (obj) =>{}
+const returnDuplicate = () => { }
+
 /* 05. `correctDuplicate` Correct the city name of the duplicated city.
 
 Write a function, `correctDuplicate` that finds the ONE duplicated city,
@@ -98,7 +108,7 @@ with id of 5 to 'Nice' and then return that object with the corrected city name.
 HINT: Can you use functions you have already written to help solve this problem?
 */
 
-const correctDuplicate = (data,change) =>{}
+const correctDuplicate = () => { }
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
