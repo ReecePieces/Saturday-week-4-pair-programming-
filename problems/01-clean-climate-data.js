@@ -64,7 +64,6 @@ was duplicated in id 3, 7, and 9, the returned object should look like:
 
 // interiate through obj using cities names as a id and push the ids into the cities name that match
 
- const findDuplicates = (dataPoint) => {}
 //
 const findDuplicates = (arr) => {
     const trackerObj = {}
@@ -94,7 +93,21 @@ HINT: Use documentation to research the `find()` method in JavaScript. You may,
 but do not have to, use this method to solve this problem.
 */
 
-const returnDuplicate = () => { }
+const returnDuplicate = (arr) => {
+    //capture an object of city names and ids
+    //search ids from that city for the highest value
+    //finally return the object at the array index that matches the id using arr.find looking through the obj.ids for the matching id
+    const citiesIds = findDuplicates(arr);
+
+    for (const city in citiesIds) {
+        const arrayIds = citiesIds[city];
+        if (arrayIds.length > 1){
+            let finalIndex = arrayIds[arrayIds.length - 1]
+            return arr.find(obj => obj.id === finalIndex)
+        }
+
+    }
+}
 
 /* 05. `correctDuplicate` Correct the city name of the duplicated city.
 
@@ -107,9 +120,13 @@ with id of 5 to 'Nice' and then return that object with the corrected city name.
 
 HINT: Can you use functions you have already written to help solve this problem?
 */
-
-const correctDuplicate = () => { }
-
+//we need to find the dup, we have a function for this!
+//we then need to delete and replace the entire dup from the array
+//we then need to return the entire array
+const correctDuplicate = (climateData, arg) => {
+    const dupsObj = returnDuplicate(climateData);
+    return { ...dupsObj, city: arg };
+  };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
