@@ -11,8 +11,18 @@ For example, it should return:
 [ "Amsterdam, Netherlands", "Athens, Greece", ...plus 103 more cities ]
 */
 
-// Your code here
+//declare the function
+//go into function in climateData get key
+//new array containing city and county using .map method
 
+const listAllCitiesWithCountries (data) {
+    //return city.filter((el) => el.toLowerCase().includes(country.toLowerCase()));
+
+
+    return data.map(obj => {
+        return obj.city + ', ' obj.country;
+    });
+}
 
 /* 02. `listAllUsCities`
 What are all of the United States cities included in the data set?
@@ -24,7 +34,16 @@ For example, it should return:
 [ 'Atlanta GA, United States', 'Austin TX, United States', ...plus more cities ]
 */
 
-// Your code here
+//declare function
+//list all cities
+//declare a variable as an array
+//use pull all cities and then use .filter to filter 'united states'
+
+const listAllUsCities (array) {
+    let cities = listAllCitiesWithCountries(array);
+    return cities.filter((ele) => ele.includes('United States'))
+
+}
 
 
 
@@ -38,7 +57,18 @@ was duplicated in id 3, 7, and 9, the returned object should look like:
 { 'Athens: [ 2 ], 'Mexico City': [ 3, 7, 9 ] }
 */
 
-// Your code here
+// interiate through obj using cities names as a id and push the ids into the cities name that match
+//
+const findDuplicates (dataPoint) {
+    const cityId = dataPoint.reduce((acc, obj) => {
+        if (acc[city]) {
+            acc[city].push(obj.id)
+        } else {
+            acc[city] = [obj.id]
+        }
+        return acc
+    })
+}
 
 
 /* 04. `returnDuplicate` Which city object should be corrected in
@@ -73,5 +103,5 @@ HINT: Can you use functions you have already written to help solve this problem?
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
-module.exports = [ listAllCitiesWithCountries, listAllUsCities, findDuplicates,
-    returnDuplicate, correctDuplicate ];
+module.exports = [listAllCitiesWithCountries, listAllUsCities, findDuplicates,
+    returnDuplicate, correctDuplicate];
